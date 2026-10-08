@@ -1,0 +1,29 @@
+## macOS
+.DS_Store
+*.DS_Store
+
+## Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+.swiftpm/
+
+## Swift Package Manager
+.build/
+
+## Secrets — the real files are never committed; the red project references stay
+ResellSecrets/Keys.xcconfig
+ResellSecrets/Supporting/GoogleService-Info.plist
+ResellSecrets/Supporting/resell-service.json
+**/Keys.xcconfig
+**/GoogleService-Info.plist
+**/resell-service.json
+*.xcconfig.local
+
+## Personal notes
+CLAUDE.local.md
