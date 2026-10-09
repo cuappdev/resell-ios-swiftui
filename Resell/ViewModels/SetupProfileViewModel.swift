@@ -24,11 +24,14 @@ extension SetupProfileView {
         // MARK: - Functions
 
         /// Loads, downsizes, and stores the picked photo as the onboarding draft's profile image.
+        /// Ignores a stale result if the user picks another photo before this load finishes.
         func loadSelectedImage(into main: MainView.ViewModel) {
+            let item = selectedItem
             Task {
-                guard let selectedItem,
-                      let data = try? await selectedItem.loadTransferable(type: Data.self),
-                      let image = UIImage(data: data) else {
+                guard let item,
+                      let data = try? await item.loadTransferable(type: Data.self),
+                      let image = UIImage(data: data),
+                      item == selectedItem else {
                     return
                 }
                 main.profileImage = image.resizedToMaxDimension(512)

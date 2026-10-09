@@ -92,6 +92,8 @@ struct SetupProfileView: View {
             } label: {
                 checkbox
             }
+            .accessibilityLabel("Agree to Resell's End User License Agreement")
+            .accessibilityValue(viewModel.didAgreeWithEULA ? "Agreed" : "Not agreed")
 
             Text("I agree to Resell's")
                 .font(Constants.Fonts.title4)

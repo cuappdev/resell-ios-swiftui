@@ -47,7 +47,8 @@ final class UserSessionManager: ObservableObject {
         }
     }
 
-    /// Clears Google, Firebase, and backend session state.
+    /// Clears the local Google and Firebase session.
+    /// (The backend `POST /auth/logout` call lands with the signed-in app rewrite.)
     func logout() {
         GoogleAuthManager.shared.signOut()
     }

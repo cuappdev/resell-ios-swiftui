@@ -23,12 +23,12 @@ struct PurpleButton: View {
 
     var body: some View {
         Button {
-            if isActive { action() }
+            if isActive && !isLoading { action() }
         } label: {
             label
                 .opacity(isActive ? 1.0 : 0.4)
         }
-        .disabled(!isActive)
+        .disabled(!isActive || isLoading)
     }
 
     private var label: some View {

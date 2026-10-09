@@ -5,6 +5,7 @@
 //  Created by jiwon jeong on 10/8/26.
 //
 
+import Combine
 import FirebaseCore
 import GoogleSignIn
 import SwiftUI
@@ -29,6 +30,9 @@ struct ResellApp: App {
                     )
                     .environmentObject(mainViewModel)
                     .onOpenURL { GIDSignIn.sharedInstance.handle($0) }
+                    .onReceive(NotificationCenter.default.publisher(for: Constants.Notifications.logoutUser)) { _ in
+                        mainViewModel.logout()
+                    }
             }
             .task { await restoreSession() }
         }

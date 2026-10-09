@@ -16,10 +16,9 @@ xcuserdata/
 ## Swift Package Manager
 .build/
 
-## Secrets — the real files are never committed; the red project references stay
-ResellSecrets/Keys.xcconfig
-ResellSecrets/Supporting/GoogleService-Info.plist
-ResellSecrets/Supporting/resell-service.json
+## Secrets — ignore the whole directory so no credential can be staged;
+## the Xcode project's red references to these files stay tracked.
+ResellSecrets/
 **/Keys.xcconfig
 **/GoogleService-Info.plist
 **/resell-service.json

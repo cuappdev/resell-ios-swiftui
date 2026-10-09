@@ -17,7 +17,9 @@ extension UIImage {
         let scaleFactor = maxSize / largestDimension
         let newSize = CGSize(width: size.width * scaleFactor, height: size.height * scaleFactor)
 
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        // Scale 1.0 renders one pixel per point so the output matches `maxSize` in pixels
+        // instead of the device's screen scale (which would upload a much larger image).
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
         defer { UIGraphicsEndImageContext() }
         draw(in: CGRect(origin: .zero, size: newSize))
 

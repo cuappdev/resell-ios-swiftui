@@ -90,10 +90,12 @@ final class NetworkManager: APIClient {
         let (data, response) = try await URLSession.shared.data(for: request)
 
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-            guard attempt < maxAttempts else {
-                GoogleAuthManager.shared.forceLogout(reason: "Max authentication retry attempts exceeded")
-                throw ErrorResponse.maxRetriesHit
-            }
+            let serverError = (try? jsonDecoder.decode(ErrorResponse.self, from: data))
+                ?? ErrorResponse(error: "Unauthorized", httpCode: 401)
+
+            // Still unauthorized after refreshing once: surface the real error rather than
+            // forcing another logout (the refresh path below already handles that).
+            guard attempt < maxAttempts else { throw serverError }
 
             do {
                 try await GoogleAuthManager.shared.refreshSignInIfNeeded()

@@ -43,7 +43,13 @@ final class GoogleAuthManager {
             throw GoogleAuthError.noUserSignedIn
         }
 
-        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presenting)
+        let result: GIDSignInResult
+        do {
+            result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presenting)
+        } catch let error as NSError where error.code == GIDSignInError.canceled.rawValue {
+            throw GoogleAuthError.cancelled
+        }
+
         try await exchangeCredentials(for: result.user)
         try await authorizeUser()
     }
@@ -141,10 +147,12 @@ final class GoogleAuthManager {
 
 enum GoogleAuthError: Error, LocalizedError {
     case noUserSignedIn
+    case cancelled
 
     var errorDescription: String? {
         switch self {
         case .noUserSignedIn: return "No user is currently signed in."
+        case .cancelled: return "Sign-in was cancelled."
         }
     }
 }

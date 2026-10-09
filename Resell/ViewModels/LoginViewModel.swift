@@ -34,6 +34,8 @@ extension LoginView {
                     main.sessionState = .signedIn
                 } catch let error as ErrorResponse where error == .accountCreationNeeded {
                     main.sessionState = .creatingProfile
+                } catch GoogleAuthError.cancelled {
+                    // User dismissed the Google sheet — not an error.
                 } catch {
                     errorText = (error as? ErrorResponse)?.error ?? "An unknown error occurred."
                     didPresentError = true

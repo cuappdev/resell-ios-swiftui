@@ -53,6 +53,7 @@ extension MainView {
         }
 
         func logout() {
+            guard sessionState != .signedOut else { return }
             UserSessionManager.shared.logout()
             resetOnboardingDraft()
             sessionState = .signedOut

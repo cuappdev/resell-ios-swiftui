@@ -75,6 +75,7 @@ struct VenmoView: View {
                 .foregroundStyle(Constants.Colors.resellPurple)
                 .padding(.top, Constants.Venmo.skipTopPadding)
         }
+        .disabled(viewModel.isLoading)
     }
 
     private var errorSheet: some View {

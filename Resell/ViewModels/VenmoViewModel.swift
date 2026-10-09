@@ -37,6 +37,8 @@ extension VenmoView {
 
         /// Uploads the profile image, creates the backend account, and advances to the signed-in app.
         private func createAccount(main: MainView.ViewModel) {
+            guard !isLoading else { return }
+
             guard let googleUser = GoogleAuthManager.shared.user else {
                 presentError("Authentication failed. Please try logging in again.")
                 return
