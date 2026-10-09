@@ -1,0 +1,28 @@
+## macOS
+.DS_Store
+*.DS_Store
+
+## Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+.swiftpm/
+
+## Swift Package Manager
+.build/
+
+## Secrets — ignore the whole directory so no credential can be staged;
+## the Xcode project's red references to these files stay tracked.
+ResellSecrets/
+**/Keys.xcconfig
+**/GoogleService-Info.plist
+**/resell-service.json
+*.xcconfig.local
+
+## Personal notes
+CLAUDE.local.md

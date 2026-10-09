@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2976284630785BFF0086E59F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2976284530785BFF0086E59F /* FirebaseAuth */; };
+		2976284830785BFF0086E59F /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2976284730785BFF0086E59F /* FirebaseCore */; };
+		2976285530785C010086E59F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2976285330785C010086E59F /* GoogleService-Info.plist */; };
+		2976285730785C010086E59F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2976285630785C010086E59F /* GoogleSignIn */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		297627D0307855710086E59F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 297627BA307855700086E59F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 297627C1307855700086E59F;
+			remoteInfo = Resell;
+		};
+		297627DA307855710086E59F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 297627BA307855700086E59F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 297627C1307855700086E59F;
+			remoteInfo = Resell;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		297627C2307855700086E59F /* Resell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		297627CF307855710086E59F /* ResellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		297627D9307855710086E59F /* ResellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2976285030785C010086E59F /* Keys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.xcconfig; sourceTree = "<group>"; };
+		2976285330785C010086E59F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2976285430785C010086E59F /* resell-service.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "resell-service.json"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		297627C4307855700086E59F /* Resell */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resell;
+			sourceTree = "<group>";
+		};
+		297627D2307855710086E59F /* ResellTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ResellTests;
+			sourceTree = "<group>";
+		};
+		297627DC307855710086E59F /* ResellUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ResellUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		297627BF307855700086E59F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2976284830785BFF0086E59F /* FirebaseCore in Frameworks */,
+				2976284630785BFF0086E59F /* FirebaseAuth in Frameworks */,
+				2976285730785C010086E59F /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627CC307855710086E59F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627D6307855710086E59F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		297627B9307855700086E59F = {
+			isa = PBXGroup;
+			children = (
+				2976285130785C010086E59F /* ResellSecrets */,
+				297627C4307855700086E59F /* Resell */,
+				297627D2307855710086E59F /* ResellTests */,
+				297627DC307855710086E59F /* ResellUITests */,
+				297627C3307855700086E59F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		297627C3307855700086E59F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				297627C2307855700086E59F /* Resell.app */,
+				297627CF307855710086E59F /* ResellTests.xctest */,
+				297627D9307855710086E59F /* ResellUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2976285130785C010086E59F /* ResellSecrets */ = {
+			isa = PBXGroup;
+			children = (
+				2976285030785C010086E59F /* Keys.xcconfig */,
+				2976285230785C010086E59F /* Supporting */,
+			);
+			path = ResellSecrets;
+			sourceTree = "<group>";
+		};
+		2976285230785C010086E59F /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				2976285330785C010086E59F /* GoogleService-Info.plist */,
+				2976285430785C010086E59F /* resell-service.json */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		297627C1307855700086E59F /* Resell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 297627E3307855710086E59F /* Build configuration list for PBXNativeTarget "Resell" */;
+			buildPhases = (
+				297627BE307855700086E59F /* Sources */,
+				297627BF307855700086E59F /* Frameworks */,
+				297627C0307855700086E59F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				297627C4307855700086E59F /* Resell */,
+			);
+			name = Resell;
+			packageProductDependencies = (
+				2976284530785BFF0086E59F /* FirebaseAuth */,
+				2976284730785BFF0086E59F /* FirebaseCore */,
+				2976285630785C010086E59F /* GoogleSignIn */,
+			);
+			productName = Resell;
+			productReference = 297627C2307855700086E59F /* Resell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		297627CE307855710086E59F /* ResellTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 297627E6307855710086E59F /* Build configuration list for PBXNativeTarget "ResellTests" */;
+			buildPhases = (
+				297627CB307855710086E59F /* Sources */,
+				297627CC307855710086E59F /* Frameworks */,
+				297627CD307855710086E59F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				297627D1307855710086E59F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				297627D2307855710086E59F /* ResellTests */,
+			);
+			name = ResellTests;
+			packageProductDependencies = (
+			);
+			productName = ResellTests;
+			productReference = 297627CF307855710086E59F /* ResellTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		297627D8307855710086E59F /* ResellUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 297627E9307855710086E59F /* Build configuration list for PBXNativeTarget "ResellUITests" */;
+			buildPhases = (
+				297627D5307855710086E59F /* Sources */,
+				297627D6307855710086E59F /* Frameworks */,
+				297627D7307855710086E59F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				297627DB307855710086E59F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				297627DC307855710086E59F /* ResellUITests */,
+			);
+			name = ResellUITests;
+			packageProductDependencies = (
+			);
+			productName = ResellUITests;
+			productReference = 297627D9307855710086E59F /* ResellUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		297627BA307855700086E59F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					297627C1307855700086E59F = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					297627CE307855710086E59F = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 297627C1307855700086E59F;
+					};
+					297627D8307855710086E59F = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 297627C1307855700086E59F;
+					};
+				};
+			};
+			buildConfigurationList = 297627BD307855700086E59F /* Build configuration list for PBXProject "Resell" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 297627B9307855700086E59F;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2976284430785BFF0086E59F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2976284930785C410086E59F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 297627C3307855700086E59F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				297627C1307855700086E59F /* Resell */,
+				297627CE307855710086E59F /* ResellTests */,
+				297627D8307855710086E59F /* ResellUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		297627C0307855700086E59F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2976285530785C010086E59F /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627CD307855710086E59F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627D7307855710086E59F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		297627BE307855700086E59F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627CB307855710086E59F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		297627D5307855710086E59F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		297627D1307855710086E59F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 297627C1307855700086E59F /* Resell */;
+			targetProxy = 297627D0307855710086E59F /* PBXContainerItemProxy */;
+		};
+		297627DB307855710086E59F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 297627C1307855700086E59F /* Resell */;
+			targetProxy = 297627DA307855710086E59F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		297627E1307855710086E59F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		297627E2307855710086E59F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		297627E4307855710086E59F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2976285030785C010086E59F /* Keys.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cornellappdev.resell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		297627E5307855710086E59F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2976285030785C010086E59F /* Keys.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cornellappdev.resell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		297627E7307855710086E59F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.ResellTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Resell.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Resell";
+			};
+			name = Debug;
+		};
+		297627E8307855710086E59F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.ResellTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Resell.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Resell";
+			};
+			name = Release;
+		};
+		297627EA307855710086E59F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.ResellUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Resell;
+			};
+			name = Debug;
+		};
+		297627EB307855710086E59F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.ResellUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Resell;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		297627BD307855700086E59F /* Build configuration list for PBXProject "Resell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				297627E1307855710086E59F /* Debug */,
+				297627E2307855710086E59F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		297627E3307855710086E59F /* Build configuration list for PBXNativeTarget "Resell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				297627E4307855710086E59F /* Debug */,
+				297627E5307855710086E59F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		297627E6307855710086E59F /* Build configuration list for PBXNativeTarget "ResellTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				297627E7307855710086E59F /* Debug */,
+				297627E8307855710086E59F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		297627E9307855710086E59F /* Build configuration list for PBXNativeTarget "ResellUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				297627EA307855710086E59F /* Debug */,
+				297627EB307855710086E59F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2976284430785BFF0086E59F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
+		2976284930785C410086E59F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2976284530785BFF0086E59F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2976284430785BFF0086E59F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		2976284730785BFF0086E59F /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2976284430785BFF0086E59F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		2976285630785C010086E59F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2976284930785C410086E59F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 297627BA307855700086E59F /* Project object */;
+}
