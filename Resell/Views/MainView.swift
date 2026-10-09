@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-/// The signed-in home surface. A placeholder for this increment — onboarding is the focus;
-/// the real tab bar and feature tabs land in a later rewrite step.
+/// The app's signed-in home surface.
 struct MainView: View {
 
     // MARK: - Properties

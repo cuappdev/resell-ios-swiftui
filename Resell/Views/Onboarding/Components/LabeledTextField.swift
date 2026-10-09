@@ -45,7 +45,11 @@ struct LabeledTextField: View {
             .frame(height: frameHeight)
             .background(Constants.Colors.wash)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .onChange(of: text) { enforceCharacterLimit() }
+            .onChange(of: text) {
+                if let maxCharacters, text.count > maxCharacters {
+                    text = String(text.prefix(maxCharacters))
+                }
+            }
             .onSubmit { UIApplication.shared.endEditing() }
     }
 
@@ -68,12 +72,11 @@ struct LabeledTextField: View {
                 .background(Constants.Colors.wash)
                 .cornerRadius(10)
                 .frame(height: frameHeight)
-                .onChange(of: text) { enforceCharacterLimit() }
+                .onChange(of: text) {
+                    if let maxCharacters, text.count > maxCharacters {
+                        text = String(text.prefix(maxCharacters))
+                    }
+                }
         }
-    }
-
-    private func enforceCharacterLimit() {
-        guard let maxCharacters, text.count > maxCharacters else { return }
-        text = String(text.prefix(maxCharacters))
     }
 }

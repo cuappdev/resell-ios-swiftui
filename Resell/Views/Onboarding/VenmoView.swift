@@ -62,14 +62,13 @@ struct VenmoView: View {
             isActive: !mainViewModel.venmoHandle.cleaned().isEmpty,
             text: "Continue"
         ) {
-            createUser()
+            viewModel.submit(main: mainViewModel)
         }
     }
 
     private var skipButton: some View {
         Button {
-            mainViewModel.venmoHandle = ""
-            createUser()
+            viewModel.skip(main: mainViewModel)
         } label: {
             Text("Skip")
                 .font(Constants.Fonts.title1)
@@ -95,24 +94,6 @@ struct VenmoView: View {
         .presentationDetents([.height(Constants.Login.errorSheetHeight)])
         .presentationDragIndicator(.visible)
         .presentationCornerRadius(25)
-    }
-
-    // MARK: - Actions
-
-    private func createUser() {
-        Task {
-            let success = await viewModel.createUser(
-                username: mainViewModel.username,
-                bio: mainViewModel.bio,
-                venmoHandle: mainViewModel.venmoHandle,
-                image: mainViewModel.profileImage
-            )
-
-            if success {
-                mainViewModel.resetOnboardingDraft()
-                withAnimation { mainViewModel.sessionState = .signedIn }
-            }
-        }
     }
 }
 

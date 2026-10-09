@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2976284630785BFF0086E59F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2976284530785BFF0086E59F /* FirebaseAuth */; };
 		2976284830785BFF0086E59F /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2976284730785BFF0086E59F /* FirebaseCore */; };
-		2976285730785C010086E59F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2976285630785C010086E59F /* GoogleSignIn */; };
 		2976285530785C010086E59F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2976285330785C010086E59F /* GoogleService-Info.plist */; };
+		2976285730785C010086E59F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2976285630785C010086E59F /* GoogleSignIn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

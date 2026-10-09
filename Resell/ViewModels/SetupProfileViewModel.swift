@@ -23,14 +23,16 @@ extension SetupProfileView {
 
         // MARK: - Functions
 
-        /// Loads and downsizes a picked photo for use as the profile image.
-        func loadImage(from item: PhotosPickerItem?) async -> UIImage? {
-            guard let item,
-                  let data = try? await item.loadTransferable(type: Data.self),
-                  let image = UIImage(data: data) else {
-                return nil
+        /// Loads, downsizes, and stores the picked photo as the onboarding draft's profile image.
+        func loadSelectedImage(into main: MainView.ViewModel) {
+            Task {
+                guard let selectedItem,
+                      let data = try? await selectedItem.loadTransferable(type: Data.self),
+                      let image = UIImage(data: data) else {
+                    return
+                }
+                main.profileImage = image.resizedToMaxDimension(512)
             }
-            return image.resizedToMaxDimension(512)
         }
 
         /// The profile is ready to submit once the required fields and the EULA are satisfied.

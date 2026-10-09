@@ -48,7 +48,7 @@ struct LoginView: View {
             text: "Login with NetID",
             horizontalPadding: Constants.Login.buttonHorizontalPadding
         ) {
-            signIn()
+            viewModel.signIn(main: mainViewModel)
         }
     }
 
@@ -64,27 +64,12 @@ struct LoginView: View {
 
             PurpleButton(text: "Try Again", horizontalPadding: 60) {
                 viewModel.didPresentError = false
-                signIn()
+                viewModel.signIn(main: mainViewModel)
             }
         }
         .presentationDetents([.height(Constants.Login.errorSheetHeight)])
         .presentationDragIndicator(.visible)
         .presentationCornerRadius(25)
-    }
-
-    // MARK: - Actions
-
-    private func signIn() {
-        Task {
-            switch await viewModel.googleSignIn() {
-            case .success:
-                mainViewModel.sessionState = .signedIn
-            case .accountCreationNeeded:
-                mainViewModel.sessionState = .creatingProfile
-            case .failed:
-                break
-            }
-        }
     }
 }
 

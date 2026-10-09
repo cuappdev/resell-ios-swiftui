@@ -60,11 +60,6 @@ final class NetworkManager: APIClient {
         _ = try await perform { try await self.makeRequest(url: url, method: "POST", body: requestData) }
     }
 
-    func post<T: Decodable>(url: URL) async throws -> T {
-        let (data, _) = try await perform { try await self.makeRequest(url: url, method: "POST") }
-        return try jsonDecoder.decode(T.self, from: data)
-    }
-
     func delete(url: URL) async throws {
         _ = try await perform { try await self.makeRequest(url: url, method: "DELETE") }
     }
@@ -73,18 +68,6 @@ final class NetworkManager: APIClient {
 
     func authorize(authorizeBody: AuthorizeBody) async throws -> User? {
         try await post(url: try constructURL(endpoint: "/auth"), body: authorizeBody)
-    }
-
-    func getUser() async throws -> UserResponse {
-        try await get(url: try constructURL(endpoint: "/auth/"))
-    }
-
-    func logout() async throws -> LogoutResponse {
-        try await post(url: try constructURL(endpoint: "/auth/logout/"))
-    }
-
-    func deleteAccount(userID: String) async throws {
-        try await delete(url: try constructURL(endpoint: "/auth/id/\(userID)/"))
     }
 
     // MARK: - User Endpoints
@@ -107,9 +90,6 @@ final class NetworkManager: APIClient {
         let (data, response) = try await URLSession.shared.data(for: request)
 
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-            let error = (try? jsonDecoder.decode(ErrorResponse.self, from: data))
-                ?? ErrorResponse(error: "Unauthorized", httpCode: 401)
-
             guard attempt < maxAttempts else {
                 GoogleAuthManager.shared.forceLogout(reason: "Max authentication retry attempts exceeded")
                 throw ErrorResponse.maxRetriesHit

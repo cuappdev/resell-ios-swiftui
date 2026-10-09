@@ -50,7 +50,7 @@ struct SetupProfileView: View {
             matching: .images,
             photoLibrary: .shared()
         )
-        .onChange(of: viewModel.selectedItem) { loadSelectedImage() }
+        .onChange(of: viewModel.selectedItem) { viewModel.loadSelectedImage(into: mainViewModel) }
         .sheet(isPresented: $viewModel.didShowWebView) {
             WebView(url: URL(string: Constants.SetupProfile.eulaURL)!)
                 .ignoresSafeArea()
@@ -138,16 +138,6 @@ struct SetupProfileView: View {
             horizontalPadding: Constants.SetupProfile.buttonHorizontalPadding
         ) {
             mainViewModel.sessionState = .linkingVenmo
-        }
-    }
-
-    // MARK: - Actions
-
-    private func loadSelectedImage() {
-        Task {
-            if let image = await viewModel.loadImage(from: viewModel.selectedItem) {
-                mainViewModel.profileImage = image
-            }
         }
     }
 }
