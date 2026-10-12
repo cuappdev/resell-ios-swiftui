@@ -16,19 +16,15 @@ extension ProductDetailView {
 
         // MARK: - Properties
 
-        /// Starts as the post passed from the feed, then refreshed with full details on `load`.
-        var post: Post
+        /// The full post refetched from the backend; supersedes the feed copy once loaded.
+        var fullPost: Post?
         var isSaved = false
         var errorMessage: String?
-
-        init(post: Post) {
-            self.post = post
-        }
 
         // MARK: - Functions
 
         /// Refreshes the full post (the feed payload can omit seller info / images) and the saved state.
-        func load() async {
+        func load(_ post: Post) async {
             do {
                 isSaved = try await NetworkManager.shared.postIsSaved(id: post.id).isSaved
             } catch {
@@ -37,7 +33,7 @@ extension ProductDetailView {
 
             do {
                 if let full = try await NetworkManager.shared.getPostByID(id: post.id).post {
-                    post = full
+                    fullPost = full
                 }
             } catch {
                 Logger.services.error("Error in ProductDetailView.ViewModel.load (post): \(error)")
@@ -45,7 +41,7 @@ extension ProductDetailView {
         }
 
         /// Optimistically flips the saved state, rolling back if the request fails.
-        func toggleSaved() {
+        func toggleSaved(for post: Post) {
             let newValue = !isSaved
             isSaved = newValue
 
