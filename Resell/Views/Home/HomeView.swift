@@ -19,12 +19,7 @@ struct HomeView: View {
         content
             .background(Constants.Colors.white)
             .navigationTitle("Recent Listings")
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .productDetail(let post):
-                    ProductDetailView(post: post)
-                }
-            }
+            .navigationDestinations()
             .task {
                 if case .loading = viewModel.state { await viewModel.load() }
             }

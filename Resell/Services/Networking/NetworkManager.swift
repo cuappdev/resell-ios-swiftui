@@ -103,6 +103,18 @@ final class NetworkManager: APIClient {
         try await post(url: try constructURL(endpoint: "/post/unsave/postId/\(id)/"))
     }
 
+    func getPostsByUserID(id: String) async throws -> PostsResponse {
+        try await get(url: try constructURL(endpoint: "/post/userId/\(id)/"))
+    }
+
+    func getArchivedPostsByUserID(id: String) async throws -> PostsResponse {
+        try await get(url: try constructURL(endpoint: "/post/archive/userId/\(id)/"))
+    }
+
+    func getSavedPosts() async throws -> PostsResponse {
+        try await get(url: try constructURL(endpoint: "/post/save/"))
+    }
+
     // MARK: - Image Endpoints
 
     func uploadImage(image: ImageBody) async throws -> ImageResponse {
