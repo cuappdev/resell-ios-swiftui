@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The app's signed-in home surface.
+/// The signed-in container: a tab bar where each tab owns its own `NavigationStack`.
 struct MainView: View {
 
     // MARK: - Properties
@@ -17,6 +17,23 @@ struct MainView: View {
     // MARK: - UI
 
     var body: some View {
+        TabView {
+            NavigationStack {
+                HomeView()
+            }
+            .tabItem { Label("Home", image: "home") }
+
+            NavigationStack {
+                profileTab
+            }
+            .tabItem { Label("Profile", image: "user") }
+        }
+        .tint(Constants.Colors.resellPurple)
+    }
+
+    // MARK: - Profile (placeholder)
+
+    private var profileTab: some View {
         VStack(spacing: 24) {
             Spacer()
 
@@ -37,6 +54,7 @@ struct MainView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Constants.Colors.white)
+        .navigationTitle("Profile")
     }
 }
 

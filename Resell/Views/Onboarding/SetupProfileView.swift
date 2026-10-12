@@ -75,13 +75,10 @@ struct SetupProfileView: View {
             Button {
                 viewModel.didShowPhotosPicker = true
             } label: {
-                Image(systemName: "pencil.circle.fill")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-                    .foregroundStyle(Constants.Colors.resellPurple)
-                    .background(Constants.Colors.white.clipShape(.circle))
+                Image("pencil.circle")
                     .shadow(radius: 2)
             }
+            .buttonStyle(.borderless)
         }
     }
 
