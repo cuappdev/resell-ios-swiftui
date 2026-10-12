@@ -1,5 +1,5 @@
 //
-//  ShimmerView.swift
+//  ShimmerModifier.swift
 //  Resell
 //
 //  Created by jiwon jeong on 10/8/26.
@@ -7,17 +7,13 @@
 
 import SwiftUI
 
-/// A placeholder that sweeps a soft highlight across itself while content loads.
-struct ShimmerView: View {
-
-    // MARK: - Properties
+/// Sweeps a soft highlight across a view while its content loads. Apply with `.shimmer()`.
+struct ShimmerModifier: ViewModifier {
 
     @State private var phase: CGFloat = -1
 
-    // MARK: - UI
-
-    var body: some View {
-        Constants.Colors.wash
+    func body(content: Content) -> some View {
+        content
             .overlay {
                 GeometryReader { geometry in
                     LinearGradient(
@@ -35,5 +31,13 @@ struct ShimmerView: View {
                     phase = 1.5
                 }
             }
+    }
+}
+
+extension View {
+
+    /// Applies an animated shimmer sweep — typically over a placeholder fill while content loads.
+    func shimmer() -> some View {
+        modifier(ShimmerModifier())
     }
 }

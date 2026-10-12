@@ -31,7 +31,7 @@ struct CachedImageView: View {
 
     var body: some View {
         KFImage(url)
-            .placeholder { ShimmerView() }
+            .placeholder { Constants.Colors.wash.shimmer() }
             .setProcessor(DownsamplingImageProcessor(size: targetSize))
             .cacheOriginalImage()
             .fade(duration: 0.2)
