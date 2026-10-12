@@ -60,6 +60,11 @@ final class NetworkManager: APIClient {
         _ = try await perform { try await self.makeRequest(url: url, method: "POST", body: requestData) }
     }
 
+    func post<T: Decodable>(url: URL) async throws -> T {
+        let (data, _) = try await perform { try await self.makeRequest(url: url, method: "POST") }
+        return try jsonDecoder.decode(T.self, from: data)
+    }
+
     func delete(url: URL) async throws {
         _ = try await perform { try await self.makeRequest(url: url, method: "DELETE") }
     }
@@ -80,6 +85,22 @@ final class NetworkManager: APIClient {
 
     func getAllPosts(page: Int = 1) async throws -> PostsResponse {
         try await get(url: try constructURL(endpoint: "/post?page=\(page)"))
+    }
+
+    func getPostByID(id: String) async throws -> PostResponse {
+        try await get(url: try constructURL(endpoint: "/post/id/\(id)/"))
+    }
+
+    func postIsSaved(id: String) async throws -> SavedResponse {
+        try await get(url: try constructURL(endpoint: "/post/isSaved/postId/\(id)/"))
+    }
+
+    func savePostByID(id: String) async throws -> PostResponse {
+        try await post(url: try constructURL(endpoint: "/post/save/postId/\(id)/"))
+    }
+
+    func unsavePostByID(id: String) async throws -> PostResponse {
+        try await post(url: try constructURL(endpoint: "/post/unsave/postId/\(id)/"))
     }
 
     // MARK: - Image Endpoints

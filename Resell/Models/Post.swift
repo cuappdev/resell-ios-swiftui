@@ -65,3 +65,11 @@ struct PostCategory: Codable, Hashable {
 struct PostsResponse: Codable {
     let posts: [Post]
 }
+
+struct PostResponse: Codable {
+    let post: Post?
+}
+
+struct SavedResponse: Codable {
+    let isSaved: Bool
+}

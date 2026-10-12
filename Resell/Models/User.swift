@@ -27,6 +27,12 @@ struct User: Codable, Identifiable, Hashable {
 
     var id: String { firebaseUid }
 
+    /// Full name when present, otherwise the username.
+    var displayName: String {
+        let name = "\(givenName) \(familyName)".trimmingCharacters(in: .whitespaces)
+        return name.isEmpty ? username : name
+    }
+
     static func == (lhs: User, rhs: User) -> Bool {
         lhs.firebaseUid == rhs.firebaseUid
     }
