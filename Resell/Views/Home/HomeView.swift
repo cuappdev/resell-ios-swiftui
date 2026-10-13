@@ -13,6 +13,7 @@ struct HomeView: View {
 
     @State private var viewModel = ViewModel()
     @State private var showNewListing = false
+    @State private var showFilter = false
 
     // MARK: - UI
 
@@ -33,6 +34,9 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $showNewListing) {
             NavigationStack { NewListingView() }
+        }
+        .sheet(isPresented: $showFilter) {
+            FilterView(homeViewModel: viewModel)
         }
         .navigationDestinations()
         .toolbar(.hidden, for: .navigationBar)
@@ -153,7 +157,11 @@ struct HomeView: View {
 
                 Spacer()
 
-                Button {} label: { Image("filters") }
+                Button { showFilter = true } label: {
+                    Image("filters")
+                        .renderingMode(viewModel.isFiltered ? .template : .original)
+                        .foregroundStyle(viewModel.isFiltered ? Constants.Colors.resellPurple : Constants.Colors.black)
+                }
             }
             .padding(.horizontal, Constants.Spacing.horizontalPadding)
 

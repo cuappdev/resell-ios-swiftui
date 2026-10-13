@@ -18,6 +18,8 @@ extension HomeView {
 
         var state: LoadState<[Post]> = .loading
         var savedPosts: [Post] = []
+        /// True while the feed shows filtered results rather than the paginated recent feed.
+        private(set) var isFiltered = false
 
         private var page = 1
         private var hasMore = true
@@ -64,9 +66,30 @@ extension HomeView {
             }
         }
 
+        /// Applies a filter to the feed (replaces the paginated recent feed with the result).
+        func applyFilter(_ filters: FilterRequestBody) async {
+            isFiltered = true
+            hasMore = false
+            state = .loading
+            do {
+                let posts = Post.sortedByDate(try await NetworkManager.shared.getFilteredPosts(filters: filters).posts)
+                state = posts.isEmpty ? .empty : .loaded(posts)
+            } catch {
+                state = .error((error as? ErrorResponse)?.error ?? "Couldn't apply those filters.")
+                Logger.services.error("Error in HomeView.ViewModel.applyFilter: \(error)")
+            }
+        }
+
+        /// Clears any active filter and returns to the recent feed.
+        func clearFilter() async {
+            guard isFiltered else { return }
+            isFiltered = false
+            await load()
+        }
+
         /// Loads the next page once `post` is within `prefetchThreshold` of the end.
         func loadMoreIfNeeded(currentItem post: Post) async {
-            guard case .loaded(let posts) = state, hasMore, !isFetchingMore,
+            guard !isFiltered, case .loaded(let posts) = state, hasMore, !isFetchingMore,
                   let index = posts.firstIndex(of: post),
                   index >= posts.count - prefetchThreshold else {
                 return
