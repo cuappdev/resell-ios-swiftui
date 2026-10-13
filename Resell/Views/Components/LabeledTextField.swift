@@ -17,6 +17,7 @@ struct LabeledTextField: View {
     var frameHeight: CGFloat = 40
     var isMultiLine: Bool = false
     var placeholder: String = ""
+    var keyboardType: UIKeyboardType = .default
 
     @Binding var text: String
 
@@ -43,6 +44,7 @@ struct LabeledTextField: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .frame(height: frameHeight)
+            .keyboardType(keyboardType)
             .background(Constants.Colors.wash)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .onChange(of: text) {

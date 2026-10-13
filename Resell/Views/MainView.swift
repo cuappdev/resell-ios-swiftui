@@ -20,6 +20,11 @@ struct MainView: View {
             .tabItem { Label("Home", image: "home") }
 
             NavigationStack {
+                NewListingView()
+            }
+            .tabItem { Label("Sell", image: "newListing") }
+
+            NavigationStack {
                 ProfileView()
             }
             .tabItem { Label("Profile", image: "user") }

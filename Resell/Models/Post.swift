@@ -73,3 +73,18 @@ struct PostResponse: Codable {
 struct SavedResponse: Codable {
     let isSaved: Bool
 }
+
+/// Request body for creating a listing (`POST /post/`).
+struct PostBody: Encodable {
+    let title: String
+    let description: String
+    let categories: [String]
+    let condition: String
+    let originalPrice: Double
+    let imagesBase64: [String]
+    let userId: String
+}
+
+struct ListingResponse: Codable {
+    let post: Post?
+}

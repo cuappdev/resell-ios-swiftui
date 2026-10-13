@@ -71,6 +71,19 @@ enum Constants {
 
     enum Notifications {
         static let logoutUser = Notification.Name("LogoutUser")
+        static let newListingCreated = Notification.Name("NewListingCreated")
+    }
+
+    // MARK: - Listing
+
+    enum Listing {
+        static let categories = [
+            "Clothing", "Books", "School", "Electronics", "Household", "Handmade", "Active", "Other"
+        ]
+        static let conditions = ["Never Used", "Gently Used", "Worn"]
+        static let maxImages = 9
+        static let thumbnailSize: CGFloat = 96
+        static let descriptionHeight: CGFloat = 120
     }
 
     // MARK: - Session Loading

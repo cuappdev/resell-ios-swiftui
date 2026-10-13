@@ -115,6 +115,10 @@ final class NetworkManager: APIClient {
         try await get(url: try constructURL(endpoint: "/post/save/"))
     }
 
+    func createPost(postBody: PostBody) async throws -> ListingResponse {
+        try await post(url: try constructURL(endpoint: "/post/"), body: postBody)
+    }
+
     // MARK: - Image Endpoints
 
     func uploadImage(image: ImageBody) async throws -> ImageResponse {
