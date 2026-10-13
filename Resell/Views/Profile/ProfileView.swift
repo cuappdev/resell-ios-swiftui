@@ -13,6 +13,7 @@ struct ProfileView: View {
 
     @EnvironmentObject private var mainViewModel: MainView.ViewModel
     @State private var viewModel = ViewModel()
+    @State private var showNewListing = false
 
     // MARK: - UI
 
@@ -26,11 +27,17 @@ struct ProfileView: View {
             .padding(.top, 16)
         }
         .background(Constants.Colors.white)
-        .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestinations()
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) { optionsMenu }
+            ToolbarItem(placement: .topBarLeading) { settingsMenu }
+            ToolbarItem(placement: .topBarTrailing) { calendarButton }
+        }
+        .overlay(alignment: .bottomTrailing) {
+            FloatingActionButton { showNewListing = true }
+        }
+        .fullScreenCover(isPresented: $showNewListing) {
+            NavigationStack { NewListingView() }
         }
         .refreshable { await viewModel.refresh(viewModel.selectedTab) }
         .task(id: viewModel.selectedTab) { await viewModel.load(viewModel.selectedTab) }
@@ -138,13 +145,20 @@ struct ProfileView: View {
 
     // MARK: - Options
 
-    private var optionsMenu: some View {
+    private var settingsMenu: some View {
         Menu {
             Button("Log out", role: .destructive) {
                 mainViewModel.logout()
             }
         } label: {
-            Image(systemName: "ellipsis")
+            Image(systemName: "gearshape")
+                .foregroundStyle(Constants.Colors.black)
+        }
+    }
+
+    private var calendarButton: some View {
+        Button {} label: {
+            Image(systemName: "calendar")
                 .foregroundStyle(Constants.Colors.black)
         }
     }
