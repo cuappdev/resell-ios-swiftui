@@ -88,3 +88,8 @@ struct PostBody: Encodable {
 struct ListingResponse: Codable {
     let post: Post?
 }
+
+/// Request body for `POST /post/filterByCategories`.
+struct FilterRequest: Encodable {
+    let categories: [String]
+}

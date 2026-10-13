@@ -17,6 +17,7 @@ extension HomeView {
         // MARK: - Properties
 
         var state: LoadState<[Post]> = .loading
+        var savedPosts: [Post] = []
 
         private var page = 1
         private var hasMore = true
@@ -51,6 +52,16 @@ extension HomeView {
         /// Pull-to-refresh — refetches page 1 without flashing the loading state.
         func refresh() async {
             await fetchFirstPage()
+            await loadSaved()
+        }
+
+        /// Loads the user's saved listings for the "For You" section.
+        func loadSaved() async {
+            do {
+                savedPosts = Post.sortedByDate(try await NetworkManager.shared.getSavedPosts().posts)
+            } catch {
+                Logger.services.error("Error in HomeView.ViewModel.loadSaved: \(error)")
+            }
         }
 
         /// Loads the next page once `post` is within `prefetchThreshold` of the end.

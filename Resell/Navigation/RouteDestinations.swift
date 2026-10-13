@@ -16,6 +16,8 @@ extension View {
             switch route {
             case .productDetail(let post):
                 ProductDetailView(post: post)
+            case .category(let name):
+                CategoryView(category: name)
             }
         }
     }
