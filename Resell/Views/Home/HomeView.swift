@@ -55,13 +55,26 @@ struct HomeView: View {
             Spacer()
 
             HStack(spacing: 20) {
-                Button {} label: { Image("search") }
-                Button {} label: { Image("bell") }
+                NavigationLink(value: Route.search) {
+                    icon("search")
+                }
+
+                Button {} label: {
+                    icon("bell")
+                }
             }
+            .foregroundStyle(Constants.Colors.black)
         }
         .padding(.horizontal, Constants.Spacing.horizontalPadding)
         .padding(.vertical, 12)
         .background(Constants.Colors.white)
+    }
+
+    private func icon(_ name: String) -> some View {
+        Image(name)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 26, height: 26)
     }
 
     // MARK: - Shop By Category

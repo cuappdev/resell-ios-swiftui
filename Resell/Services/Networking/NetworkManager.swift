@@ -123,6 +123,10 @@ final class NetworkManager: APIClient {
         try await post(url: try constructURL(endpoint: "/post/filterByCategories"), body: FilterRequest(categories: categories))
     }
 
+    func getSearchedPosts(keywords: String) async throws -> SearchedPostResponse {
+        try await post(url: try constructURL(endpoint: "/post/search/"), body: SearchRequest(keywords: keywords))
+    }
+
     // MARK: - Image Endpoints
 
     func uploadImage(image: ImageBody) async throws -> ImageResponse {
