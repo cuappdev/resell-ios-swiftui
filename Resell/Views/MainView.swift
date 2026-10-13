@@ -69,12 +69,12 @@ struct MainView: View {
         HStack(spacing: 0) {
             ForEach(Tab.allCases, id: \.self) { tab in
                 tabButton(for: tab)
-                    .frame(maxWidth: .infinity)
             }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
         .modifier(TabBarGlassModifier())
+        .contentShape(Capsule())
         .padding(.horizontal, 40)
         .padding(.bottom, 8)
     }
@@ -92,6 +92,8 @@ struct MainView: View {
                     .font(Constants.Fonts.subtitle1)
                     .foregroundStyle(isSelected ? Constants.Colors.resellPurple : Constants.Colors.secondaryGray)
             }
+            .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
