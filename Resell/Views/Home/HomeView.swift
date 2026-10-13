@@ -73,7 +73,10 @@ struct HomeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(Constants.Listing.categories, id: \.self) { category in
-                        CategoryCircleView(name: category)
+                        NavigationLink(value: Route.category(category)) {
+                            CategoryCircleView(name: category)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal, Constants.Spacing.horizontalPadding)

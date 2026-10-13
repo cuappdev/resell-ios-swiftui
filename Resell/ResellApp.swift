@@ -34,6 +34,7 @@ struct ResellApp: App {
                         mainViewModel.logout()
                     }
             }
+            .preferredColorScheme(.light)
             .task { await restoreSession() }
         }
     }

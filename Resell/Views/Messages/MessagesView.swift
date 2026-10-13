@@ -50,6 +50,8 @@ struct MessagesView: View {
             Text(tab.rawValue)
                 .font(Constants.Fonts.title1)
                 .foregroundStyle(Constants.Colors.black)
+                .lineLimit(1)
+                .fixedSize()
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 .overlay {

@@ -119,6 +119,10 @@ final class NetworkManager: APIClient {
         try await post(url: try constructURL(endpoint: "/post/"), body: postBody)
     }
 
+    func getFilteredPostsByCategory(categories: [String]) async throws -> PostsResponse {
+        try await post(url: try constructURL(endpoint: "/post/filterByCategories"), body: FilterRequest(categories: categories))
+    }
+
     // MARK: - Image Endpoints
 
     func uploadImage(image: ImageBody) async throws -> ImageResponse {

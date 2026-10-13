@@ -11,4 +11,5 @@ import Foundation
 /// `.navigationDestination(for: Route.self)`.
 enum Route: Hashable {
     case productDetail(Post)
+    case category(String)
 }
