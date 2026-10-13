@@ -25,6 +25,21 @@ extension HomeView {
         /// How close to the end of the feed triggers the next page.
         private let prefetchThreshold = 5
 
+        // MARK: - Init
+
+        init() {
+            observeNewListings()
+        }
+
+        /// Refresh the feed whenever a listing is posted elsewhere in the app.
+        private func observeNewListings() {
+            Task { [weak self] in
+                for await _ in NotificationCenter.default.notifications(named: Constants.Notifications.newListingCreated) {
+                    await self?.refresh()
+                }
+            }
+        }
+
         // MARK: - Functions
 
         /// Initial load — shows the full-screen loading state.
