@@ -40,6 +40,14 @@ enum Constants {
             startPoint: .bottom,
             endPoint: .top
         )
+
+        // Category circle backgrounds
+        static let categoryPink = Color(red: 202 / 255, green: 149 / 255, blue: 163 / 255)
+        static let categoryGreen = Color(red: 49 / 255, green: 96 / 255, blue: 84 / 255)
+        static let categoryLightGreen = Color(red: 164 / 255, green: 183 / 255, blue: 171 / 255)
+        static let categoryYellow = Color(red: 227 / 255, green: 181 / 255, blue: 112 / 255)
+        static let categoryBlue = Color(red: 115 / 255, green: 162 / 255, blue: 171 / 255)
+        static let categoryGray = Color(red: 214 / 255, green: 214 / 255, blue: 214 / 255)
     }
 
     // MARK: - Fonts
@@ -84,6 +92,28 @@ enum Constants {
         static let maxImages = 9
         static let thumbnailSize: CGFloat = 96
         static let descriptionHeight: CGFloat = 120
+
+        /// Circle background color for a category on the home screen.
+        static func categoryColor(_ name: String) -> Color {
+            switch name {
+            case "Clothing": return Colors.categoryPink
+            case "Books": return Colors.categoryGreen
+            case "School": return Colors.categoryLightGreen
+            case "Electronics": return Colors.categoryBlue
+            case "Household": return Colors.purpleWash
+            case "Handmade": return Colors.categoryYellow
+            case "Active": return Colors.categoryLightGreen
+            default: return Colors.categoryGray
+            }
+        }
+    }
+
+    // MARK: - Home
+
+    enum Home {
+        static let categoryCircleSize: CGFloat = 96
+        static let fabSize: CGFloat = 64
+        static let savedCardSize: CGFloat = 140
     }
 
     // MARK: - Session Loading

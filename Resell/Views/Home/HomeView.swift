@@ -12,59 +12,172 @@ struct HomeView: View {
     // MARK: - Properties
 
     @State private var viewModel = ViewModel()
+    @State private var showNewListing = false
 
     // MARK: - UI
 
     var body: some View {
-        content
-            .background(Constants.Colors.white)
-            .navigationTitle("Recent Listings")
-            .navigationDestinations()
-            .task {
-                if case .loading = viewModel.state { await viewModel.load() }
-            }
-    }
-
-    @ViewBuilder
-    private var content: some View {
-        switch viewModel.state {
-        case .loading:
-            CustomProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        case .empty:
-            message("No listings yet.")
-        case .error(let text):
-            errorState(text)
-        case .loaded(let posts):
-            feed(posts)
-        }
-    }
-
-    private func feed(_ posts: [Post]) -> some View {
         ScrollView {
-            ProductGalleryView(posts: posts) { post in
-                Task { await viewModel.loadMoreIfNeeded(currentItem: post) }
+            VStack(alignment: .leading, spacing: 28) {
+                shopByCategory
+                forYou
+                recentListings
             }
             .padding(.top, 12)
+            .padding(.bottom, 80)
+        }
+        .background(Constants.Colors.white)
+        .safeAreaInset(edge: .top, spacing: 0) { topBar }
+        .overlay(alignment: .bottomTrailing) {
+            FloatingActionButton { showNewListing = true }
+        }
+        .fullScreenCover(isPresented: $showNewListing) {
+            NavigationStack { NewListingView() }
+        }
+        .navigationDestinations()
+        .toolbar(.hidden, for: .navigationBar)
+        .task {
+            if case .loading = viewModel.state { await viewModel.load() }
+            await viewModel.loadSaved()
         }
         .refreshable { await viewModel.refresh() }
     }
 
-    private func errorState(_ text: String) -> some View {
-        VStack(spacing: 16) {
-            message(text)
-            PurpleButton(text: "Try Again", horizontalPadding: 40) {
-                Task { await viewModel.load() }
+    // MARK: - Top Bar
+
+    private var topBar: some View {
+        HStack {
+            Image("resellText")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 28)
+
+            Spacer()
+
+            HStack(spacing: 20) {
+                Button {} label: { Image("search") }
+                Button {} label: { Image("bell") }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, Constants.Spacing.horizontalPadding)
+        .padding(.vertical, 12)
+        .background(Constants.Colors.white)
+    }
+
+    // MARK: - Shop By Category
+
+    private var shopByCategory: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionHeader("Shop By Category")
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(Constants.Listing.categories, id: \.self) { category in
+                        CategoryCircleView(name: category)
+                    }
+                }
+                .padding(.horizontal, Constants.Spacing.horizontalPadding)
+            }
+        }
+    }
+
+    // MARK: - For You (Saved)
+
+    private var forYou: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionHeader("For You")
+
+            if viewModel.savedPosts.isEmpty {
+                emptySavedCard
+                    .padding(.horizontal, Constants.Spacing.horizontalPadding)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(alignment: .top, spacing: 12) {
+                        ForEach(viewModel.savedPosts) { post in
+                            NavigationLink(value: Route.productDetail(post)) {
+                                ProductCardView(post: post)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.horizontal, Constants.Spacing.horizontalPadding)
+                }
+            }
+        }
+    }
+
+    private var emptySavedCard: some View {
+        VStack(spacing: 4) {
+            Text("You haven't saved any listings yet.")
+            HStack(spacing: 4) {
+                Text("Tap")
+                Image(systemName: "bookmark")
+                Text("on a listing to save.")
+            }
+        }
+        .font(Constants.Fonts.body1)
+        .foregroundStyle(Constants.Colors.secondaryGray)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
+        .padding(32)
+        .overlay {
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Constants.Colors.stroke, lineWidth: 1)
+        }
+    }
+
+    // MARK: - Recent Listings
+
+    private var recentListings: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Recent Listings")
+                    .font(Constants.Fonts.h2)
+                    .foregroundStyle(Constants.Colors.black)
+
+                Spacer()
+
+                Button {} label: { Image("filters") }
+            }
+            .padding(.horizontal, Constants.Spacing.horizontalPadding)
+
+            feedContent
+        }
+    }
+
+    @ViewBuilder
+    private var feedContent: some View {
+        switch viewModel.state {
+        case .loading:
+            CustomProgressView(size: 36)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 40)
+        case .empty:
+            message("No listings yet.")
+        case .error(let text):
+            message(text)
+        case .loaded(let posts):
+            ProductGalleryView(posts: posts) { post in
+                Task { await viewModel.loadMoreIfNeeded(currentItem: post) }
+            }
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title)
+            .font(Constants.Fonts.h2)
+            .foregroundStyle(Constants.Colors.black)
+            .padding(.horizontal, Constants.Spacing.horizontalPadding)
     }
 
     private func message(_ text: String) -> some View {
         Text(text)
             .font(Constants.Fonts.body1)
             .foregroundStyle(Constants.Colors.secondaryGray)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 40)
     }
 }
 

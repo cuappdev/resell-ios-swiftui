@@ -12,6 +12,7 @@ struct NewListingView: View {
 
     // MARK: - Properties
 
+    @Environment(\.dismiss) private var dismiss
     @State private var viewModel = ViewModel()
 
     // MARK: - UI
@@ -49,11 +50,17 @@ struct NewListingView: View {
         .background(Constants.Colors.white)
         .navigationTitle("New Listing")
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: viewModel.selectedItems) { Task { await viewModel.loadImages() } }
-        .errorAlert($viewModel.errorMessage)
-        .alert("Listing posted!", isPresented: $viewModel.didPost) {
-            Button("OK", role: .cancel) {}
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") { dismiss() }
+                    .foregroundStyle(Constants.Colors.resellPurple)
+            }
         }
+        .onChange(of: viewModel.selectedItems) { Task { await viewModel.loadImages() } }
+        .onChange(of: viewModel.didPost) {
+            if viewModel.didPost { dismiss() }
+        }
+        .errorAlert($viewModel.errorMessage)
         .endEditingOnTap()
     }
 

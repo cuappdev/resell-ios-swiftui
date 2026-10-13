@@ -20,9 +20,9 @@ struct MainView: View {
             .tabItem { Label("Home", image: "home") }
 
             NavigationStack {
-                NewListingView()
+                MessagesView()
             }
-            .tabItem { Label("Sell", image: "newListing") }
+            .tabItem { Label("Messages", image: "messages") }
 
             NavigationStack {
                 ProfileView()
