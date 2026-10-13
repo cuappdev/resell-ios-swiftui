@@ -93,3 +93,12 @@ struct ListingResponse: Codable {
 struct FilterRequest: Encodable {
     let categories: [String]
 }
+
+struct SearchRequest: Encodable {
+    let keywords: String
+}
+
+struct SearchedPostResponse: Codable {
+    let posts: [Post]
+    let searchId: String?
+}

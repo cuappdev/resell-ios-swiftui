@@ -12,4 +12,5 @@ import Foundation
 enum Route: Hashable {
     case productDetail(Post)
     case category(String)
+    case search
 }

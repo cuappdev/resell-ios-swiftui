@@ -18,6 +18,8 @@ extension View {
                 ProductDetailView(post: post)
             case .category(let name):
                 CategoryView(category: name)
+            case .search:
+                SearchView()
             }
         }
     }
